@@ -14,18 +14,20 @@ pragma solidity ^0.6.2;
  */
 
 contract WithCards {
-    uint8[54] private _cardsList;
+    uint8[54] internal _cardsList;
 
     modifier onlyValidCard(uint8 _card) {
         require(_card > 0 && _card < 55, "Card should be between 1 and 54");
         _;
     }
 
-    function initCardsList() private {
-
+    function initCardsList() internal {
+        for (uint i; i<54; i++) {
+            _cardsList[i] = i + 1;
+        }
     }
 
-    function generateCardsList() private {
-
+    function generateCardsList() internal {
+        initCardsList();
     }
 }

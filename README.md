@@ -21,7 +21,7 @@ The winner (heart-3) will get 90% of the income as a bonus.
         pickedup cards list
     - winners list
 * Owner have the authority of the following features:
-    - Start / Stop game
+    - Start / Stop / Cancel game
         Start: resets game status
         Stop: it will refund all pending balances to the card holders
     - Configuration
@@ -34,3 +34,6 @@ The winner (heart-3) will get 90% of the income as a bonus.
     - pickup (with paying fixed amount of fee) [if already started]
     - picked-up card [if already started and picked]
     - withdraw (withdraw bonus only if winned) [if after winned]
+
+### License
+MIT

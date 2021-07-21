@@ -27,16 +27,23 @@ contract PickupLottery is WithCards, Ownable {
     uint256 public startedTime;
     uint256 public endTime;
 
+    address private _winner;
+
+    address [] private players;
+
     // player address + picked-up card
     mapping (address => uint8) private pickupStatus;
 
     // player address + paid fee
     mapping (address => uint256) private balances;
 
-    // player address + bonus amount
+    // player address + nick name
+    mapping (address => bytes) private nicknames;
+
+    // player address + awarded bonus amount
     mapping (address => uint256) private bonuses;
 
-    address[] winners;
+    bytes[] public winners;
 
     modifier onlyStopped() {
         require (!started);
@@ -54,7 +61,6 @@ contract PickupLottery is WithCards, Ownable {
 
     event GameStarted(uint256 startedTime);
     event GameStopped(uint256 startedTime, uint256 stoppedTime);
-    event GameOver(uint256 startedTime, uint256 endedTime);
 
     event FeeChanged(uint256 oldFee, uint256 newFee);
     event WinningCardChanged(uint8 oldCard, uint8 newCard);
@@ -107,33 +113,92 @@ contract PickupLottery is WithCards, Ownable {
     // generate randomized cards list
     // and record start time
     function startGame() external onlyOwner onlyStopped {
+        // clear previous status
+        for (uint i; i < players.length; i++) {
+            delete balances[palyers[i]];
+            delete pickupStatus[players[i]];
+        }
+        _winner = address(0);
+        delete endTime;
 
+        // reset new game
+        generateCardsList();
+        started = true;
+        startedTime = block.timestamp;
+
+        emit GameStarted(startedTime);
     }
 
-    // stopGame()
+    function stopGame() external onlyOwner onlyStarted {
+        _stopGame();
+    }
+
+    function _stopGame() internal onlyStarted {
+        started = false;
+        endTime = block.timestamp;
+
+        // calculate total income, and find winner
+        uint256 totalIncome;
+        for (uint i = 0; i < players.length; i++) {
+            address player = players[i];
+            totalIncome += balances[player];
+
+            uint8 card = pickupStatus[player];
+            if (card == winningCard) {
+                _winner = player;
+            }
+        }
+
+        if (_winner != address(0)) {
+            bonuses[_winner] += totalIncome.mul(bonusPercentage).div(100);
+            winners.push(nicknames[_winner]);
+        }
+
+        emit GameStopped(startedTime, endTime);
+    }
+
     // This will finish the game unexpectedly, so it will refund all balances to card holders
     // and reset all status
-    function stopGame() external onlyOwner onlyStarted {
+    function cancel() external onlyOwner onlyStarted {
 
     }
 
-    function transfer(address payable recipient, uint256 amount) onlyOwner returns (bool) {
+    function transfer(address payable recipient, uint256 amount) external onlyOwner{
         require(address(this).balance > amount, "Insufficient balance.");
+        recipient.transfer(amount);
     }
 
     /**
         Player's role
      */
-    function pick() external payable onlyStarted returns (uint8 card) {
+    function pick(bytes nickName) external payable onlyStarted returns (uint8 card) {
+        require(!pickupStatus[msg.sender], "Player can pick up card at once.");
+        require(msg.value >= fee, "Player must pay to pick up a card.");
 
+        // upgrade nick name
+        if (nickName.length > 0) {
+            nicknames[msg.sender] = nickName;
+        }
+
+        pickupStatus[msg.sender] = _cardsList[players.length];
+        players.push(msg.sender);
+        balances[msg.sender] = msg.value;
+        emit CardPicked(players.length);
+
+        if (players.length == pickupLimit) {
+            _stopGame();
+        }
+        card = pickupStatus[msg.sender];
     }
 
-    function ownPicked() external view returns (uint8 card) {
-
+    function picked() external view returns (uint8 card) {
+        return pickupStatus[msg.sender];
     }
 
-    function withdraw() external returns (bool) {
-
+    function withdraw(uint256 amount) external {
+        require(bonuses[msg.sender] > amount, "Insufficient funds.");
+        bonuses[msg.sender] -= amount;
+        payable(msg.sender).transfer(amount);
     }
 
     /**
@@ -146,11 +211,17 @@ contract PickupLottery is WithCards, Ownable {
     }
 
     function progress() external view returns (uint) {
-        return pickupStatus.length;
+        return players.length;
     }
 
     // returns all picked-up cards, without holders address
-    function allPickedUp() external view returns (uint8[]) {
+    function allPickedUp() external view onlyStopped returns (uint8[] memory cards) {
+        for (uint i; i<players.length; i++) {
+            cards.push(pickupStatus[players[i]]);
+        }
+    }
 
+    function winner() external view onlyStopped returns (bytes) {
+        return nicknames[_winner];
     }
 }
