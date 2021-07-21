@@ -37,3 +37,7 @@ The winner (heart-3) will get 90% of the income as a bonus.
 
 ### License
 MIT
+
+Thanks for leaving a tip for one cup of coffee!
+
+ETH: ```0x620dc94C842817d5d8b8207aa2DdE4f8C8b73415```

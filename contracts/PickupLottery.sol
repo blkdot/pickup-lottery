@@ -13,7 +13,7 @@ contract PickupLottery is WithCards, Ownable {
     using SafeMath for uint256;
     
     uint256 public fee = 0.01 * (10**18);
-    uint8 public winningCard = 3;
+    uint8 public winningCard = 1;
     uint8 public pickupLimit = 40;
     // 1 week limit for single game
     uint256 public timeLimit = 7 * 24 * 60 * 60 * 1000;
@@ -43,7 +43,7 @@ contract PickupLottery is WithCards, Ownable {
     // player address + awarded bonus amount
     mapping (address => uint256) private bonuses;
 
-    bytes[] public winners;
+    string[] public winners;
 
     modifier onlyStopped() {
         require (!started);
@@ -120,6 +120,7 @@ contract PickupLottery is WithCards, Ownable {
         }
         _winner = address(0);
         delete endTime;
+        delete players;
 
         // reset new game
         generateCardsList();
@@ -151,7 +152,7 @@ contract PickupLottery is WithCards, Ownable {
 
         if (_winner != address(0)) {
             bonuses[_winner] += totalIncome.mul(bonusPercentage).div(100);
-            winners.push(nicknames[_winner]);
+            winners.push(string(abi.encodePacked(nicknames[_winner])));
         }
 
         emit GameStopped(startedTime, endTime);
@@ -217,12 +218,17 @@ contract PickupLottery is WithCards, Ownable {
     // returns all picked-up cards, without holders address
     function allPickedUp() external view onlyStopped returns (uint8[] memory) {
         uint8[] memory cards = new uint8[](players.length);
-        for (uint i; i<players.length; i++) {
+        for (uint i; i < players.length; i++) {
             cards[i] = pickupStatus[players[i]];
         }
+        return cards;
     }
 
-    function winner() external view onlyStopped returns (bytes memory) {
-        return nicknames[_winner];
+    function winner() external view onlyStopped returns (string memory) {
+        return string(abi.encodePacked(nicknames[_winner]));
+    }
+
+    function winnersCount() external view returns (uint256) {
+        return winners.length;
     }
 }
