@@ -54,7 +54,7 @@ contract PickupLottery is WithCards, Ownable {
         require (
             started && 
             (block.timestamp < startedTime + timeLimit) && 
-            (pickupStatus.length < pickupLimit)
+            (players.length < pickupLimit)
         );
         _;
     }
@@ -115,7 +115,7 @@ contract PickupLottery is WithCards, Ownable {
     function startGame() external onlyOwner onlyStopped {
         // clear previous status
         for (uint i; i < players.length; i++) {
-            delete balances[palyers[i]];
+            delete balances[players[i]];
             delete pickupStatus[players[i]];
         }
         _winner = address(0);
@@ -171,8 +171,8 @@ contract PickupLottery is WithCards, Ownable {
     /**
         Player's role
      */
-    function pick(bytes nickName) external payable onlyStarted returns (uint8 card) {
-        require(!pickupStatus[msg.sender], "Player can pick up card at once.");
+    function pick(bytes memory nickName) external payable onlyStarted returns (uint8 card) {
+        require(pickupStatus[msg.sender] == 0, "Player can pick up card at once.");
         require(msg.value >= fee, "Player must pay to pick up a card.");
 
         // upgrade nick name
@@ -215,13 +215,14 @@ contract PickupLottery is WithCards, Ownable {
     }
 
     // returns all picked-up cards, without holders address
-    function allPickedUp() external view onlyStopped returns (uint8[] memory cards) {
+    function allPickedUp() external view onlyStopped returns (uint8[] memory) {
+        uint8[] memory cards = new uint8[](players.length);
         for (uint i; i<players.length; i++) {
-            cards.push(pickupStatus[players[i]]);
+            cards[i] = pickupStatus[players[i]];
         }
     }
 
-    function winner() external view onlyStopped returns (bytes) {
+    function winner() external view onlyStopped returns (bytes memory) {
         return nicknames[_winner];
     }
 }
