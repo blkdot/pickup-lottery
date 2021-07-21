@@ -22,7 +22,7 @@ contract WithCards {
     }
 
     function initCardsList() internal {
-        for (uint i; i<54; i++) {
+        for (uint8 i; i<54; i++) {
             _cardsList[i] = i + 1;
         }
     }
