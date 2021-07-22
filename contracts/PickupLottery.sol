@@ -202,6 +202,10 @@ contract PickupLottery is WithCards, Ownable {
         return pickupStatus[msg.sender];
     }
 
+    function myBonus() external view returns (uint256) {
+        return bonuses[msg.sender];
+    }
+
     function withdraw(uint256 amount) external {
         require(bonuses[msg.sender] > amount, "Insufficient funds.");
         bonuses[msg.sender] -= amount;
