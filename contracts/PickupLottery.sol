@@ -46,7 +46,7 @@ contract PickupLottery is WithCards, Ownable {
     string[] public winners;
 
     modifier onlyStopped() {
-        require (!started);
+        require (!started, "It is only available after stopped game.");
         _;
     }
 
@@ -54,7 +54,8 @@ contract PickupLottery is WithCards, Ownable {
         require (
             started && 
             (block.timestamp < startedTime + timeLimit) && 
-            (players.length < pickupLimit)
+            (players.length < pickupLimit),
+            "It is only available after start a game."
         );
         _;
     }
@@ -176,6 +177,11 @@ contract PickupLottery is WithCards, Ownable {
         require(pickupStatus[msg.sender] == 0, "Player can pick up card at once.");
         require(msg.value >= fee, "Player must pay to pick up a card.");
 
+        if (startedTime.add(timeLimit) < block.timestamp) {
+            emit GameStopped(startedTime, block.timestamp);
+            revert("Sorry, but game is already expired!");
+        }
+
         // upgrade nick name
         if (nickName.length > 0) {
             nicknames[msg.sender] = nickName;
@@ -216,10 +222,15 @@ contract PickupLottery is WithCards, Ownable {
     }
 
     // returns all picked-up cards, without holders address
-    function allPickedUp() external view onlyStopped returns (uint8[] memory) {
+    function allPickedUp() external view returns (uint8[] memory) {
         uint8[] memory cards = new uint8[](players.length);
         for (uint i; i < players.length; i++) {
-            cards[i] = pickupStatus[players[i]];
+            // if started, then show only my card. and if stopped then show all cards
+            if (started) {
+                cards[i] = players[i] == msg.sender ? pickupStatus[msg.sender] : 0;
+            } else {
+                cards[i] = pickupStatus[msg.sender];
+            }
         }
         return cards;
     }
