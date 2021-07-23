@@ -233,7 +233,7 @@ contract PickupLottery is WithCards, Ownable {
             if (started) {
                 cards[i] = players[i] == msg.sender ? pickupStatus[msg.sender] : 0;
             } else {
-                cards[i] = pickupStatus[msg.sender];
+                cards[i] = pickupStatus[players[i]];
             }
         }
         return cards;
