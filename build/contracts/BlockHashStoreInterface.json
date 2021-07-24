@@ -1,0 +1,318 @@
+{
+  "contractName": "BlockHashStoreInterface",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "number",
+          "type": "uint256"
+        }
+      ],
+      "name": "getBlockhash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"number\",\"type\":\"uint256\"}],\"name\":\"getBlockhash\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v0.6/interfaces/BlockHashStoreInterface.sol\":\"BlockHashStoreInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/v0.6/interfaces/BlockHashStoreInterface.sol\":{\"keccak256\":\"0x582f4c40385ff654cd1e622977642dc14bacc6b6151252bc99d247530616d2de\",\"urls\":[\"bzz-raw://59f0401259b4d725363d30e498012e113d3ba556e4e6e97b2817145437db7621\",\"dweb:/ipfs/QmXR2NEV4hKCW8EMAi4bFRHh1vmqgzwHirh4QSASQ7dKKz\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.6.6;\n\ninterface BlockHashStoreInterface {\n  function getBlockhash(uint256 number) external view returns (bytes32);\n}\n",
+  "sourcePath": "/home/rol/Desktop/lotteryVue/lottery/contracts/v0.6/interfaces/BlockHashStoreInterface.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v0.6/interfaces/BlockHashStoreInterface.sol",
+    "exportedSymbols": {
+      "BlockHashStoreInterface": [
+        7786
+      ]
+    },
+    "id": 7787,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7778,
+        "literals": [
+          "solidity",
+          "0.6",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:22:32"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 7786,
+        "linearizedBaseContracts": [
+          7786
+        ],
+        "name": "BlockHashStoreInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "e9413d38",
+            "id": 7785,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getBlockhash",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 7781,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7780,
+                  "mutability": "mutable",
+                  "name": "number",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 7785,
+                  "src": "116:14:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7779,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "116:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "115:16:32"
+            },
+            "returnParameters": {
+              "id": 7784,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7783,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 7785,
+                  "src": "155:7:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 7782,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "155:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "154:9:32"
+            },
+            "scope": 7786,
+            "src": "94:70:32",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7787,
+        "src": "56:110:32"
+      }
+    ],
+    "src": "32:135:32"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/v0.6/interfaces/BlockHashStoreInterface.sol",
+      "exportedSymbols": {
+        "BlockHashStoreInterface": [
+          7786
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.6",
+            ".6"
+          ]
+        },
+        "id": 7778,
+        "name": "PragmaDirective",
+        "src": "32:22:32"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            7786
+          ],
+          "name": "BlockHashStoreInterface",
+          "scope": 7787
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "e9413d38",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getBlockhash",
+              "overrides": null,
+              "scope": 7786,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "number",
+                      "overrides": null,
+                      "scope": 7785,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 7779,
+                        "name": "ElementaryTypeName",
+                        "src": "116:7:32"
+                      }
+                    ],
+                    "id": 7780,
+                    "name": "VariableDeclaration",
+                    "src": "116:14:32"
+                  }
+                ],
+                "id": 7781,
+                "name": "ParameterList",
+                "src": "115:16:32"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "overrides": null,
+                      "scope": 7785,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 7782,
+                        "name": "ElementaryTypeName",
+                        "src": "155:7:32"
+                      }
+                    ],
+                    "id": 7783,
+                    "name": "VariableDeclaration",
+                    "src": "155:7:32"
+                  }
+                ],
+                "id": 7784,
+                "name": "ParameterList",
+                "src": "154:9:32"
+              }
+            ],
+            "id": 7785,
+            "name": "FunctionDefinition",
+            "src": "94:70:32"
+          }
+        ],
+        "id": 7786,
+        "name": "ContractDefinition",
+        "src": "56:110:32"
+      }
+    ],
+    "id": 7787,
+    "name": "SourceUnit",
+    "src": "32:135:32"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.6+commit.6c089d02.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-07-24T09:01:28.079Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

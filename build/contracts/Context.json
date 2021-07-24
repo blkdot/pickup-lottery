@@ -1,13 +1,13 @@
 {
   "contractName": "Context",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Context.sol\":\"Context\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Context.sol\":{\"keccak256\":\"0x692709ef96fe90bb9ceaba75a0d6b69f5f7d3b3673a9d8bc3b0f1073116f1822\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2b03db1fe58e57887921fe649b252ce7a2f6f059554088024344fbbf0fe2290b\",\"dweb:/ipfs/QmUJGmchcBwfptP784yp85D7qbDUvSXvSWnwQGTYjggzhg\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Context.sol\":\"Context\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Context.sol\":{\"keccak256\":\"0x5943a9ffd59872dd66680b1fdc9c1522ee989ffbf96180bbeec0cd64d0e346b9\",\"urls\":[\"bzz-raw://d55c365d528cd0110fc87db6d04bb1845d5e840046a287ee6ed4d725c2a12283\",\"dweb:/ipfs/QmTCGm1b6tQZ9Z9i5xH4gKz8Wh9bntRRiXsHTnUBvux6Pv\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.6.2;\n\n/*\n * @dev Provides information about the current execution context, including the\n * sender of the transaction and its data. While these are generally available\n * via msg.sender and msg.data, they should not be accessed in such a direct\n * manner, since when dealing with meta-transactions the account sending and\n * paying for execution may not be the actual sender (as far as an application\n * is concerned).\n *\n * This contract is only required for intermediate, library-like contracts.\n */\nabstract contract Context {\n    function _msgSender() internal view virtual returns (address) {\n        return msg.sender;\n    }\n\n    function _msgData() internal view virtual returns (bytes calldata) {\n        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691\n        return msg.data;\n    }\n}",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.6.2;\n\n/*\n * @dev Provides information about the current execution context, including the\n * sender of the transaction and its data. While these are generally available\n * via msg.sender and msg.data, they should not be accessed in such a direct\n * manner, since when dealing with meta-transactions the account sending and\n * paying for execution may not be the actual sender (as far as an application\n * is concerned).\n *\n * This contract is only required for intermediate, library-like contracts.\n */\nabstract contract Context {\n    function _msgSender() internal view virtual returns (address) {\n        return msg.sender;\n    }\n\n    function _msgData() internal view virtual returns (bytes memory) {\n        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691\n        return msg.data;\n    }\n}",
   "sourcePath": "/home/rol/Desktop/lotteryVue/lottery/contracts/Context.sol",
   "ast": {
     "absolutePath": "project:/contracts/Context.sol",
@@ -17,7 +17,6 @@
       ]
     },
     "id": 23,
-    "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -148,7 +147,7 @@
             "body": {
               "id": 20,
               "nodeType": "Block",
-              "src": "755:165:0",
+              "src": "753:165:0",
               "statements": [
                 {
                   "expression": {
@@ -158,7 +157,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": -28,
-                    "src": "765:4:0",
+                    "src": "763:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$22",
                       "typeString": "contract Context"
@@ -166,7 +165,7 @@
                   },
                   "id": 16,
                   "nodeType": "ExpressionStatement",
-                  "src": "765:4:0"
+                  "src": "763:4:0"
                 },
                 {
                   "expression": {
@@ -178,7 +177,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": -15,
-                      "src": "905:3:0",
+                      "src": "903:3:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_magic_message",
                         "typeString": "msg"
@@ -192,7 +191,7 @@
                     "memberName": "data",
                     "nodeType": "MemberAccess",
                     "referencedDeclaration": null,
-                    "src": "905:8:0",
+                    "src": "903:8:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_calldata_ptr",
                       "typeString": "bytes calldata"
@@ -201,7 +200,7 @@
                   "functionReturnParameters": 14,
                   "id": 19,
                   "nodeType": "Return",
-                  "src": "898:15:0"
+                  "src": "896:15:0"
                 }
               ]
             },
@@ -231,11 +230,11 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 21,
-                  "src": "739:14:0",
+                  "src": "739:12:0",
                   "stateVariable": false,
-                  "storageLocation": "calldata",
+                  "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeIdentifier": "t_bytes_memory_ptr",
                     "typeString": "bytes"
                   },
                   "typeName": {
@@ -252,20 +251,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "738:16:0"
+              "src": "738:14:0"
             },
             "scope": 22,
-            "src": "688:232:0",
+            "src": "688:230:0",
             "stateMutability": "view",
             "virtual": true,
             "visibility": "internal"
           }
         ],
         "scope": 23,
-        "src": "554:368:0"
+        "src": "554:366:0"
       }
     ],
-    "src": "33:889:0"
+    "src": "33:887:0"
   },
   "legacyAST": {
     "attributes": {
@@ -274,8 +273,7 @@
         "Context": [
           22
         ]
-      },
-      "license": "MIT"
+      }
     },
     "children": [
       {
@@ -465,7 +463,7 @@
                       "overrides": null,
                       "scope": 21,
                       "stateVariable": false,
-                      "storageLocation": "calldata",
+                      "storageLocation": "memory",
                       "type": "bytes",
                       "value": null,
                       "visibility": "internal"
@@ -483,12 +481,12 @@
                     ],
                     "id": 13,
                     "name": "VariableDeclaration",
-                    "src": "739:14:0"
+                    "src": "739:12:0"
                   }
                 ],
                 "id": 14,
                 "name": "ParameterList",
-                "src": "738:16:0"
+                "src": "738:14:0"
               },
               {
                 "children": [
@@ -506,12 +504,12 @@
                         },
                         "id": 15,
                         "name": "Identifier",
-                        "src": "765:4:0"
+                        "src": "763:4:0"
                       }
                     ],
                     "id": 16,
                     "name": "ExpressionStatement",
-                    "src": "765:4:0"
+                    "src": "763:4:0"
                   },
                   {
                     "attributes": {
@@ -542,53 +540,49 @@
                             },
                             "id": 17,
                             "name": "Identifier",
-                            "src": "905:3:0"
+                            "src": "903:3:0"
                           }
                         ],
                         "id": 18,
                         "name": "MemberAccess",
-                        "src": "905:8:0"
+                        "src": "903:8:0"
                       }
                     ],
                     "id": 19,
                     "name": "Return",
-                    "src": "898:15:0"
+                    "src": "896:15:0"
                   }
                 ],
                 "id": 20,
                 "name": "Block",
-                "src": "755:165:0"
+                "src": "753:165:0"
               }
             ],
             "id": 21,
             "name": "FunctionDefinition",
-            "src": "688:232:0"
+            "src": "688:230:0"
           }
         ],
         "id": 22,
         "name": "ContractDefinition",
-        "src": "554:368:0"
+        "src": "554:366:0"
       }
     ],
     "id": 23,
     "name": "SourceUnit",
-    "src": "33:889:0"
+    "src": "33:887:0"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.6.12+commit.27d51765.Emscripten.clang"
+    "version": "0.6.6+commit.6c089d02.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-07-22T05:13:43.116Z",
+  "updatedAt": "2021-07-24T09:01:27.936Z",
   "devdoc": {
-    "kind": "dev",
-    "methods": {},
-    "version": 1
+    "methods": {}
   },
   "userdoc": {
-    "kind": "user",
-    "methods": {},
-    "version": 1
+    "methods": {}
   }
 }

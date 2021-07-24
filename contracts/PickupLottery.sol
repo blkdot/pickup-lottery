@@ -10,16 +10,14 @@ import "./Ownable.sol";
     [[[ Simple Playing Card Lottery ]]]
 */
 contract PickupLottery is WithCards, Ownable {
-    using SafeMath for uint256;
-
     uint256 private constant MAX_TIME_LIMIT = 6 * 30 * 24 * 60 * 60 * 1000;
     uint256 private constant MIN_TIME_LIMIT = 5 * 60 * 1000;
     uint256 private constant MAX_BONUS_PERCENTAGE = 95;
 
     // config params
-    uint256 public fee = 0.01 * (10**18);
-    uint8 public winningCard = 1;
-    uint8 public pickupLimit = 40;
+    uint256 public roundFee = 0.01 * (10**18);
+    uint256 public winningCard = 1;
+    uint256 public pickupLimit = 40;
     // 1 week limit for single round
     uint256 public timeLimit = 7 * 24 * 60 * 60 * 1000;
     uint256 public bonusPercentage = 90;
@@ -31,7 +29,7 @@ contract PickupLottery is WithCards, Ownable {
     address [] private _players;
 
     // player address + picked-up card
-    mapping (address => uint8) private pickupStatus;
+    mapping (address => uint256) private pickupStatus;
 
     // player address + paid fee
     mapping (address => uint256) private _balances;
@@ -63,8 +61,8 @@ contract PickupLottery is WithCards, Ownable {
     event Stopped(uint256 startedTime, uint256 stoppedTime);
 
     event FeeChanged(uint256 oldFee, uint256 newFee);
-    event WinningCardChanged(uint8 oldCard, uint8 newCard);
-    event PickupLimitChanged(uint8 oldLimit, uint8 newLimit);
+    event WinningCardChanged(uint256 oldCard, uint256 newCard);
+    event PickupLimitChanged(uint256 oldLimit, uint256 newLimit);
     event TimeLimitChanged(uint256 oldLimit, uint256 newLimit);
     event BonusPercentageChanged(uint256 oldBonus, uint256 newBonus);
 
@@ -75,16 +73,16 @@ contract PickupLottery is WithCards, Ownable {
      */
     function setFee(uint256 _fee) external onlyOwner onlyStopped {
         require(_fee > 0, "Fee should not be zero.");
-        emit FeeChanged(fee, _fee);
-        fee = _fee;
+        emit FeeChanged(roundFee, _fee);
+        roundFee = _fee;
     }
 
-    function setWinningCard(uint8 _card) external onlyOwner onlyStopped onlyValidCard(_card) {
+    function setWinningCard(uint256 _card) external onlyOwner onlyStopped onlyValidCard(_card) {
         emit WinningCardChanged(winningCard, _card);
         winningCard = _card;
     }
 
-    function setPickupLimit(uint8 _limit) external onlyOwner onlyStopped {
+    function setPickupLimit(uint256 _limit) external onlyOwner onlyStopped {
         require(_limit > 0 && _limit < 55, "Pickup limit should be less than 55.");
         emit PickupLimitChanged(pickupLimit, _limit);
         pickupLimit = _limit;
@@ -144,7 +142,7 @@ contract PickupLottery is WithCards, Ownable {
             address player = _players[i];
             totalIncome += _balances[player];
 
-            uint8 card = pickupStatus[player];
+            uint256 card = pickupStatus[player];
             if (card == winningCard) {
                 _winner = player;
             }
@@ -172,9 +170,9 @@ contract PickupLottery is WithCards, Ownable {
     /**
         Player's role
      */
-    function pick(bytes memory nickName) external payable onlyStarted returns (uint8 card) {
+    function pick(bytes calldata nickName) external payable onlyStarted returns (uint256 card) {
         require(pickupStatus[msg.sender] == 0, "Player can pick up card at once.");
-        require(msg.value >= fee, "Player must pay to pick up a card.");
+        require(msg.value >= roundFee, "Player must pay to pick up a card.");
 
         if (startedAt.add(timeLimit) < block.timestamp) {
             emit Stopped(startedAt, block.timestamp);
@@ -197,7 +195,7 @@ contract PickupLottery is WithCards, Ownable {
         card = pickupStatus[msg.sender];
     }
 
-    function picked() external view returns (uint8 card) {
+    function picked() external view returns (uint256 card) {
         return pickupStatus[msg.sender];
     }
 
@@ -227,8 +225,8 @@ contract PickupLottery is WithCards, Ownable {
     }
 
     // returns all picked-up cards, without holders address
-    function all() external view returns (uint8[] memory) {
-        uint8[] memory cards = new uint8[](_players.length);
+    function all() external view returns (uint256[] memory) {
+        uint256[] memory cards = new uint256[](_players.length);
         for (uint i; i < _players.length; i++) {
             // if started, then show only my card. and if stopped then show all cards
             if (started) {

@@ -1,0 +1,503 @@
+{
+  "contractName": "AggregatorValidatorInterface",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "previousRoundId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "int256",
+          "name": "previousAnswer",
+          "type": "int256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "currentRoundId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "int256",
+          "name": "currentAnswer",
+          "type": "int256"
+        }
+      ],
+      "name": "validate",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"previousRoundId\",\"type\":\"uint256\"},{\"internalType\":\"int256\",\"name\":\"previousAnswer\",\"type\":\"int256\"},{\"internalType\":\"uint256\",\"name\":\"currentRoundId\",\"type\":\"uint256\"},{\"internalType\":\"int256\",\"name\":\"currentAnswer\",\"type\":\"int256\"}],\"name\":\"validate\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v0.6/interfaces/AggregatorValidatorInterface.sol\":\"AggregatorValidatorInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/v0.6/interfaces/AggregatorValidatorInterface.sol\":{\"keccak256\":\"0x9403d756c0e628ea0886db03668ec0a9a9b8cb8c781a57da68d05fb5f1faf976\",\"urls\":[\"bzz-raw://3cfe28f8e87ffb4c730e528874eb4af5925a9ea3ca5eeb412b8904be350e461e\",\"dweb:/ipfs/QmcMYd8AM5BtRTaFDJptWaNmNB6Uk9yVEx4z4AFrvZs2KT\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.6.0;\n\ninterface AggregatorValidatorInterface {\n  function validate(\n    uint256 previousRoundId,\n    int256 previousAnswer,\n    uint256 currentRoundId,\n    int256 currentAnswer\n  ) external returns (bool);\n}\n",
+  "sourcePath": "/home/rol/Desktop/lotteryVue/lottery/contracts/v0.6/interfaces/AggregatorValidatorInterface.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v0.6/interfaces/AggregatorValidatorInterface.sol",
+    "exportedSymbols": {
+      "AggregatorValidatorInterface": [
+        7776
+      ]
+    },
+    "id": 7777,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7762,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:31"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 7776,
+        "linearizedBaseContracts": [
+          7776
+        ],
+        "name": "AggregatorValidatorInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "beed9b51",
+            "id": 7775,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validate",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 7771,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7764,
+                  "mutability": "mutable",
+                  "name": "previousRoundId",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 7775,
+                  "src": "123:23:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7763,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "123:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7766,
+                  "mutability": "mutable",
+                  "name": "previousAnswer",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 7775,
+                  "src": "152:21:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 7765,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "152:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7768,
+                  "mutability": "mutable",
+                  "name": "currentRoundId",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 7775,
+                  "src": "179:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7767,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "179:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7770,
+                  "mutability": "mutable",
+                  "name": "currentAnswer",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 7775,
+                  "src": "207:20:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 7769,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "207:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "117:114:31"
+            },
+            "returnParameters": {
+              "id": 7774,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7773,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 7775,
+                  "src": "250:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7772,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "250:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "249:6:31"
+            },
+            "scope": 7776,
+            "src": "100:156:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7777,
+        "src": "57:201:31"
+      }
+    ],
+    "src": "32:227:31"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/v0.6/interfaces/AggregatorValidatorInterface.sol",
+      "exportedSymbols": {
+        "AggregatorValidatorInterface": [
+          7776
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 7762,
+        "name": "PragmaDirective",
+        "src": "32:23:31"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            7776
+          ],
+          "name": "AggregatorValidatorInterface",
+          "scope": 7777
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "beed9b51",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "validate",
+              "overrides": null,
+              "scope": 7776,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "previousRoundId",
+                      "overrides": null,
+                      "scope": 7775,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 7763,
+                        "name": "ElementaryTypeName",
+                        "src": "123:7:31"
+                      }
+                    ],
+                    "id": 7764,
+                    "name": "VariableDeclaration",
+                    "src": "123:23:31"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "previousAnswer",
+                      "overrides": null,
+                      "scope": 7775,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int256",
+                          "type": "int256"
+                        },
+                        "id": 7765,
+                        "name": "ElementaryTypeName",
+                        "src": "152:6:31"
+                      }
+                    ],
+                    "id": 7766,
+                    "name": "VariableDeclaration",
+                    "src": "152:21:31"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "currentRoundId",
+                      "overrides": null,
+                      "scope": 7775,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 7767,
+                        "name": "ElementaryTypeName",
+                        "src": "179:7:31"
+                      }
+                    ],
+                    "id": 7768,
+                    "name": "VariableDeclaration",
+                    "src": "179:22:31"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "currentAnswer",
+                      "overrides": null,
+                      "scope": 7775,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int256",
+                          "type": "int256"
+                        },
+                        "id": 7769,
+                        "name": "ElementaryTypeName",
+                        "src": "207:6:31"
+                      }
+                    ],
+                    "id": 7770,
+                    "name": "VariableDeclaration",
+                    "src": "207:20:31"
+                  }
+                ],
+                "id": 7771,
+                "name": "ParameterList",
+                "src": "117:114:31"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "overrides": null,
+                      "scope": 7775,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 7772,
+                        "name": "ElementaryTypeName",
+                        "src": "250:4:31"
+                      }
+                    ],
+                    "id": 7773,
+                    "name": "VariableDeclaration",
+                    "src": "250:4:31"
+                  }
+                ],
+                "id": 7774,
+                "name": "ParameterList",
+                "src": "249:6:31"
+              }
+            ],
+            "id": 7775,
+            "name": "FunctionDefinition",
+            "src": "100:156:31"
+          }
+        ],
+        "id": 7776,
+        "name": "ContractDefinition",
+        "src": "57:201:31"
+      }
+    ],
+    "id": 7777,
+    "name": "SourceUnit",
+    "src": "32:227:31"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.6+commit.6c089d02.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-07-24T09:01:28.078Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
